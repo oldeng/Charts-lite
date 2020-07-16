@@ -1,0 +1,63 @@
+{
+  "name": "@oldeng/charts",
+  "version": "0.0.0",
+  "description": "line bar pie",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oldeng/charts.git"
+  },
+  "scripts": {
+    "build": "node build/index.js",
+    "serve": "vue-cli-service serve",
+    "prepublish": "npm run build",
+    "deploy": "node deploy/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jiaming743/charts/issues"
+  },
+  "keywords": [
+    "canvas",
+    "charts",
+    "line",
+    "bar",
+    "radar",
+    "pie"
+  ],
+  "homepage": "https://github.com/jiaming743/charts#readme",
+  "dependencies": {
+    "@babel/runtime": "^7.5.5",
+    "@jiaminghi/c-render": "*",
+    "vue": "^2.6.11",
+    "vue-router": "^3.3.4",
+    "vuex": "^3.5.1"
+  },
+  "devDependencies": {
+    "@babel/register": "^7.4.4",
+    "@jiaminghi/fs": "0.0.2",
+    "@vue/cli-plugin-babel": "~4.3.0",
+    "@vue/cli-plugin-router": "~4.3.0",
+    "@vue/cli-plugin-vuex": "~4.3.0",
+    "@vue/cli-service": "~4.3.0",
+    "browserify": "^16.5.0",
+    "chai": "^4.2.0",
+    "cross-env": "^6.0.3",
+    "ftp": "^0.3.10",
+    "less": "^3.0.4",
+    "less-loader": "^5.0.0",
+    "mocha": "^6.1.4",
+    "rollup": "^1.27.5",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-replace": "^2.2.0",
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-vue": "^5.0.0",
+    "uglifyjs": "^2.4.11",
+    "vue-cli-plugin-vmock": "^0.0.8",
+    "vue-template-compiler": "^2.6.11"
+  }
+}
