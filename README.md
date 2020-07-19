@@ -11,9 +11,6 @@
     </a>
 </p>
 
-### Charts是干什么的?
-
-- 它是一个基于**canvas**的`轻量`图表库.
 
 ### 支持
 
@@ -22,17 +19,20 @@
 * `饼状图`
 * `雷达图`
 * `仪表盘`
+* `独立的Canvas渲染库`
+* `独立的贝塞尔曲线和动画库`
 
 ### npm安装
 
 ```shell
-$ npm install @jiaminghi/charts
+//npm安装暂时未开放
+$ npm install @oldeng/
 ```
 
 ### 使用
 
 ```javascript
-import Charts from '@jiaminghi/charts'
+import Charts from '@oldeng/charts'
 
 const container = document.getElementById('container')
 
