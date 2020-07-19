@@ -519,7 +519,6 @@ function calcSplitLinePosition (allAxis, chart) {
 
 function getLineConfig (axisItem) {
   const { animationCurve, animationFrame, rLevel } = axisItem
-
   return [{
     name: 'polyline',
     index: rLevel,
@@ -548,7 +547,6 @@ function getTickConfig (axisItem) {
 
   const shapes = getTickShapes(axisItem)
   const style = getTickStyle(axisItem)
-
   return shapes.map(shape => ({
     name: 'polyline',
     index: rLevel,
@@ -562,7 +560,6 @@ function getTickConfig (axisItem) {
 
 function getTickShapes (axisItem) {
   const { tickLinePosition } = axisItem
-
   return tickLinePosition.map(points => ({ points }))
 }
 
@@ -571,26 +568,50 @@ function getTickStyle (axisItem) {
 }
 
 function getLabelConfig (axisItem) {
-  const { animationCurve, animationFrame, rLevel } = axisItem
+  const { hover, hoverRect, click, label, mouseEnter, axisLabel, mouseOuter, animationCurve, animationFrame, rLevel } = axisItem
 
   const shapes = getLabelShapes(axisItem)
-  const styles = getLabelStyle(axisItem, shapes)
-
-  return shapes.map((shape, i) => ({
-    name: 'text',
-    index: rLevel,
-    visible: axisItem.axisLabel.show,
-    animationCurve,
-    animationFrame,
-    shape,
-    style: styles[i],
-    setGraphCenter: () => (void 0)
-  }))
+  const styles = getLabelStyle(axisItem, shapes);
+  return shapes.map((shape, i) => {
+    let rect = []
+    //坐标轴文字鼠标移入检测
+    if (hoverRect && hoverRect.length === 2 ) {
+      rect = hoverRect.slice()
+      rect.splice(0, 0,shape.position[0] - shape.content.length * styles[i].fontSize, shape.position[1] - styles[i].fontSize / 2);
+      console.log('hoverRect = ',rect);
+    }
+    return {
+      name: 'text',
+      index: rLevel,
+      visible: axisItem.axisLabel.show,
+      animationCurve,
+      animationFrame,
+      shape,
+      data: label[i],
+      style: styles[i],
+      setGraphCenter: () => (void 0),
+      axisLabel: axisLabel,
+      hover,
+      hoverRect: rect,
+      click: click,
+      mouseEnter: getMOuseEnterHandler(mouseEnter),
+      mouseOuter: mouseOuter
+    }
+  })
 }
-
+function getMOuseEnterHandler (mouseEnter) {
+  let handler = mouseEnter;
+  return function () {
+    debugger;
+    let event = arguments[0];
+    let graphic = arguments[1];
+    if (handler) {
+      handler(event, graphic);
+    }
+  }
+}
 function getLabelShapes (axisItem) {
   const { label, tickPosition, position } = axisItem
-
   return tickPosition.map((point, i) => ({
     position: getLabelRealPosition(point, position),
     content: label[i].toString(),
@@ -602,7 +623,6 @@ function getLabelRealPosition (points, position) {
 
   if (position === 'top' || position === 'bottom') index = 1
   if (position === 'top' || position === 'left') plus = -10
-
   points = deepClone(points)
   points[index] += plus
 
@@ -617,7 +637,6 @@ function getLabelStyle (axisItem, shapes) {
   const align = getAxisLabelRealAlign(position)
 
   style = deepMerge(align, style)
-
   const styles = shapes.map(({ position }) => ({
     ...style,
     graphCenter: position
@@ -649,8 +668,7 @@ function getAxisLabelRealAlign (position) {
 }
 
 function getNameConfig (axisItem) {
-  const { hover, mouseEnter, mouseOuter, click, animationCurve, animationFrame, rLevel } = axisItem
-
+  const { animationCurve, animationFrame, rLevel } = axisItem
   return [{
     name: 'text',
     index: rLevel,
@@ -658,17 +676,11 @@ function getNameConfig (axisItem) {
     animationFrame,
     shape: getNameShape(axisItem),
     style: getNameStyle(axisItem),
-    //添加事件
-    hover,
-    click: click,
-    mouseEnter: mouseEnter,
-    mouseOuter: mouseOuter
   }]
 }
 
 function getNameShape (axisItem) {
   const { name, namePosition } = axisItem
-
   return {
     content: name,
     position: namePosition
@@ -726,7 +738,6 @@ function getSplitLineConfig (axisItem) {
 
   const shapes = getSplitLineShapes(axisItem)
   const style = getSplitLineStyle(axisItem)
-
   return shapes.map(shape => ({
     name: 'polyline',
     index: rLevel,
@@ -740,7 +751,6 @@ function getSplitLineConfig (axisItem) {
 
 function getSplitLineShapes (axisItem) {
   const { splitLinePosition } = axisItem
-
   return splitLinePosition.map(points => ({ points }))
 }
 

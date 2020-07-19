@@ -1,4 +1,7 @@
+import { getId } from './id';
+
 export const barConfig = {
+  id: getId(),
   hover: true,
   click: function () {
     console.log('click');
@@ -8,6 +11,9 @@ export const barConfig = {
   },
   mouseOuter: function () {
     console.log('mouseOuter');
+  },
+  mouseMove: function () {
+    console.log('mouseMove');
   },
   /**
    * @description Whether to display this bar chart

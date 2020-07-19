@@ -26,7 +26,7 @@ function getGridConfig (gridItem, updater) {
   const style = getGridStyle(gridItem)
 
   updater.chart.gridArea = { ...shape }
-
+  debugger;
   return [{
     name: 'rect',
     index: rLevel,

@@ -406,7 +406,7 @@ function getBackgroundBarStyle (barItem) {
 }
 
 function getBarConfig (barItem) {
-  const { hover, mouseEnter, mouseOuter, click, barLabelAxisPos, animationCurve, animationFrame, rLevel } = barItem
+  const { hover, mouseEnter, mouseOuter, moved, data, click, mousemove, barLabelAxisPos, animationCurve, animationFrame, rLevel } = barItem
 
   const name = getBarName(barItem)
 
@@ -418,11 +418,20 @@ function getBarConfig (barItem) {
     animationFrame,
     shape: getBarShape(barItem, i),
     style: getBarStyle(barItem, i),
+    data: data[i],
     //添加事件
-    click: click,
+    click: getClickHandler(click),
     mouseEnter: mouseEnter,
-    mouseOuter: mouseOuter
+    mouseOuter: mouseOuter,
+    mousemove: mousemove
   }))
+}
+
+//获取柱子点击事件处理器
+function getClickHandler (handler) {
+  const { event, graphic } = arguments;
+  console.log('拦截点击事件');
+  return handler.bind(this);
 }
 
 function getBarName (barItem) {
@@ -657,7 +666,7 @@ function beforeUpdateBar (graphs, barItem, i, updater) {
 }
 
 function getLabelConfig (barItem) {
-  let { animationCurve, animationFrame, rLevel } = barItem
+  let { hover, mouseEnter, mouseOuter, moved, click, animationCurve, animationFrame, rLevel } = barItem
 
   const shapes = getLabelShapes(barItem)
   const style = getLabelStyle(barItem)
@@ -669,7 +678,8 @@ function getLabelConfig (barItem) {
     animationCurve,
     animationFrame,
     shape,
-    style
+    style,
+    hover, mouseEnter, mouseOuter, moved, click
   }))
 }
 

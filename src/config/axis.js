@@ -1,4 +1,7 @@
+import { getId } from './id';
+
 export const xAxisConfig = {
+  id: getId(),
   /**
    * @description Axis name
    * @type {String}
@@ -203,6 +206,7 @@ export const xAxisConfig = {
 }
 
 export const yAxisConfig = {
+  id: getId(),
   /**
    * @description Axis name
    * @type {String}
