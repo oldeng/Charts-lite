@@ -11,7 +11,7 @@
 
 <style lang="less">
 body {
-  background: rgba(30, 30, 30);
+  // background: rgba(30, 30, 30);
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -4,7 +4,37 @@ const option1 = {
   },
   xAxis: {
     name: 'X',
-    
+    hover: true,
+    hoverRect: [30, 20],
+    mouseEnter: function (event, graphic) {
+      console.log('mouseoEnter');
+      let dom = document.querySelector('#tips');
+      let content = document.querySelector('.content');
+      dom.style.display = 'block';
+      // dom.style.left = event.x + 'px';
+      // dom.style.top = event.y + 'px';
+      content.innerText = `${graphic.shape.content}`
+      console.log(graphic);
+      let tipsWidth = dom.offsetWidth;
+      let tipsHeight = dom.offsetHeight;
+      dom.style.left = event.x + 'px';
+      let offset = {
+        x: 52,
+        y: 0
+      }
+      dom.style.width =  graphic.axisLabel.style.fontSize * graphic.shape.content.length + 'px';
+      dom.style.height = graphic.axisLabel.style.fontSize + 'px';
+      dom.style.left = graphic.shape.position[0] + offset.x +'px';
+      dom.style.top = graphic.shape.position[1] + offset.y   + 'px';
+      let arrowLeft = document.querySelector('.arrow-left');
+      let arrowRight = document.querySelector('.arrow-right');
+      let arrowTop = document.querySelector('.arrow-up');
+      let arrowBottom = document.querySelector('.arrow-down');
+      arrowRight.style.display = 'none';
+      arrowTop.style.display = 'none';
+      arrowBottom.style.display = 'block';
+      arrowLeft.style.display = 'none';
+    },
     axisLabel: {
       style: {
         border: 1,
@@ -12,7 +42,7 @@ const option1 = {
         fontSize: 30,
       }
     },
-    data: ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    data: ['AA', 'B', 'C', 'D', 'E', 'F', 'G']
   },
   grid: {
     left: 100,
@@ -36,12 +66,12 @@ const option1 = {
       let tipsHeight = dom.offsetHeight;
       dom.style.left = event.x + 'px';
       let offset = {
-        x: 35,
-        y: 0
+        x: 70,
+        y: 50
       }
       dom.style.width =  graphic.axisLabel.style.fontSize * graphic.shape.content.length + 'px';
-      dom.style.left = event.x + offset.x +'px';
-      dom.style.top = event.y + offset.y - tipsHeight / 2  + 'px';
+      dom.style.left = graphic.shape.position[0] + offset.x +'px';
+      dom.style.top = graphic.shape.position[1] + offset.y + 'px';
       let arrowLeft = document.querySelector('.arrow-left');
       let arrowRight = document.querySelector('.arrow-right');
       let arrowTop = document.querySelector('.arrow-up');

@@ -40,54 +40,55 @@ h1 {
 
 #tips {
   width: 50px;
-  height: 50px;
-  border: 1px solid rgba(255, 255, 255, .3);
+  min-height: 50px;
   border-radius: 5px;
   position: absolute;
   transition: all 0.1s;
   left: 100px;
   display: none;
+  pad: 10px;
+  background: rgba(0, 0, 0, .6);
   /* css3三角形（向上 ▲） */
   .arrow-up {
     width: 0px;
     height: 0px;
-    border-left: 10px solid transparent; /* 右透明 */
-    border-right: 10px solid transparent; /*右透明 */
-    border-bottom: 10px solid rgba(255, 255, 255, .3); /* 定义底部颜色 */
+    border-left: 5px solid transparent; /* 右透明 */
+    border-right: 5px solid transparent; /*右透明 */
+    border-bottom: 5px solid rgba(0, 0, 0, .6); /* 定义底部颜色 */
     font-size: 0px;
     line-height: 0px;
     position: absolute;
     left: 50%;
-    margin-top: -10px;
-    margin-left: -10px;
+    margin-top: -5px;
+    margin-left: -5px;
   }
   /* css3三角形（向下 ▼） */
   .arrow-down {
     width: 0px;
     height: 0px;
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-top: 10px solid rgba(255, 255, 255, .3);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid rgba(0, 0, 0, .6);
     font-size: 0px;
     line-height: 0px;
         position: absolute;
-    bottom: -10px;
+    bottom: -5px;
     left: 50%;
-    margin-left: -10px;
+    margin-left: -5px;
   }
   /* css3三角形（向左） */
   .arrow-left {
     position: absolute;
     width: 0px;
     height: 0px;
-    border-bottom: 10px solid transparent; /* left arrow slant */
-    border-top: 10px solid transparent; /* right arrow slant */
-    border-right: 10px solid rgba(255, 255, 255, .3); /* bottom, add background color here */
+    border-bottom: 5px solid transparent; /* left arrow slant */
+    border-top: 5px solid transparent; /* right arrow slant */
+    border-right: 5px solid rgba(0, 0, 0, .6); /* bottom, add background color here */
     font-size: 0px;
     line-height: 0px;
-    left: -10px;
+    left: -5px;
     top: 50%;
-    margin-top: -10px;
+    margin-top: -5px;
 
   }
   /* css3三角形（向右） */
@@ -95,14 +96,14 @@ h1 {
     position: absolute;
     width: 0px;
     height: 0px;
-    border-bottom: 10px solid transparent; /* left arrow slant */
-    border-top: 10px solid transparent; /* right arrow slant */
-    border-left: 10px solid rgba(255, 255, 255, .3); /* bottom, add background color here */
+    border-bottom: 5px solid transparent; /* left arrow slant */
+    border-top: 5px solid transparent; /* right arrow slant */
+    border-left: 5px solid rgba(0, 0, 0, .6); /* bottom, add background color here */
     font-size: 0px;
     line-height: 0px;
-    right: -10px;
+    right: -5px;
     top: 50%;
-    margin-top: -10px;
+    margin-top: -5px;
   }
 }
 </style>
